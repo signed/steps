@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import React from "react";
 import App from "./App";
-import { chakra } from "./selectors";
+import { chakra, menuItem, menuButton } from "./selectors";
 
 // https://github.com/testing-library/user-event/issues/630 initial implementation
 //         https://github.com/testing-library/user-event/releases/tag/v13.1.0
@@ -27,6 +27,12 @@ test("chakra click", async () => {
 });
 
 test("chakra click with custom selectors", async () => {
+  render(<App />);
+  user.click(await menuButton("Open Menu").find());
+  user.click(await menuItem(/woo-hoo! t/i).find());
+});
+
+test("chakra click with custom selectors with indirection", async () => {
   render(<App />);
   user.click(await chakra.menuButton("Open Menu").find());
   user.click(await chakra.menuItem(/woo-hoo! t/i).find());
