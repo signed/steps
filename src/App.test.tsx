@@ -24,7 +24,7 @@ test("chakra click", async () => {
   await screen.findByRole("button", { name: "Open Menu" });
   events.click(await screen.findByRole("button", { name: "Open Menu" }));
   await screen.findByRole("menuitem", {
-    name: /woo\-hoo! t/i,
+    name: /woo-hoo! t/i,
   });
   events.click(await screen.findByRole("menuitem", { name: /Woo-hoo!/ }));
 });
